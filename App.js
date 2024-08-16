@@ -9,9 +9,27 @@ const { width, height } = Dimensions.get('window');
 export default function App() {
   const [notes, setNotes] = useState([]);
 
+  // useEffect(() => {
+  //   setNotes(data);
+  // }, []);
+
   useEffect(() => {
-    setNotes(data);
-  }, []);
+    const url = "https://backendrn-production.up.railway.app/api/note/fetchallnotes";
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        const json = await response.json();
+        console.log(json);
+            setNotes(json);
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+
+    fetchData();
+}, []);
+
 
   const renderItem = ({ item }) => (
     <View style={styles.card}>
