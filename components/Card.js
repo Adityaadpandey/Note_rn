@@ -21,14 +21,14 @@ export default function Card() {
         const response = await fetch(url);
         const json = await response.json();
         // console.log(json);
-            setNotes(json);
+        setNotes(json);
       } catch (error) {
         console.log("error", error);
       }
     };
 
     fetchData();
-}, []);
+  }, []);
 
 
   const renderItem = ({ item }) => (
