@@ -27,15 +27,15 @@ const Welcome = ({ navigation }) => {
             <View style={styles.buttonContainer1}>
                 <Button
                     style={styles.button}
-                    title="Signin"
-                    onPress={() => navigation.navigate('Signin')}
-                    color="red"
+                    title="Quiz"
+                    onPress={() => navigation.navigate('Login')}
+                    color="purple"
                     textStyle={{ fontSize: 20 }}
                 /><Button
                 style={styles.button}
-                title="Signin"
+                title="Dost"
                 onPress={() => navigation.navigate('Signin')}
-                color="red"
+                color="purple"
                 textStyle={{ fontSize: 20 }}
             />
             </View>
