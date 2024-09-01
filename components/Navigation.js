@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, SafeAreaView } from 'react-native';
 import { UserContext } from '../context/UserContext';
 
 export default function Navigation({ route }) {
@@ -7,7 +7,8 @@ export default function Navigation({ route }) {
   const pageName = route.name;
 
   return (
-    <View style={styles.container}>
+      <SafeAreaView>
+           <View style={styles.container}>
       <Text style={styles.pageName}>{pageName}</Text>
       {user?.img ? (
         <Image
@@ -18,6 +19,7 @@ export default function Navigation({ route }) {
         <View style={styles.placeholder} />
       )}
     </View>
+   </SafeAreaView>
   );
 }
 
@@ -26,6 +28,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingTop:20,
     backgroundColor: '#f8f8f8',
     paddingVertical: 10,
     paddingHorizontal: 15,
