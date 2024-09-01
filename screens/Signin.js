@@ -14,6 +14,8 @@ import {
   AsyncStorage
 } from 'react-native';
 import LottieView from 'lottie-react-native';
+import * as SecureStore from 'expo-secure-store';
+
 
 
 
@@ -53,6 +55,8 @@ export default function Signin({ navigation }) {
         const json = await response.json();
         if (json.success) {
           Alert.alert('Success', 'Sign-in Successful!');
+          await SecureStore.setItemAsync('auth',tk);
+
           _storeData = async () => {
             try {
               await AsyncStorage.setItem(

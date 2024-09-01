@@ -16,7 +16,6 @@ import {
   Animated,
 } from 'react-native';
 import LottieView from 'lottie-react-native';
-// import * as SecureStore from 'expo-secure-store';
 import * as SecureStore from 'expo-secure-store';
 
 
@@ -60,7 +59,7 @@ const Login = ({ navigation }) => {
       if (json.success) {
         Alert.alert('Success', 'Sign-in Successful!');
         await SecureStore.setItemAsync('auth',tk);
-        console.log('Sign-in Successful!',json.authtoken);
+        // console.log('Sign-in Successful!',json.authtoken);
          
 
         navigation.navigate('Welcome');
