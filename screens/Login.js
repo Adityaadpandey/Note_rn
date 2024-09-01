@@ -3,6 +3,7 @@ import {
   StyleSheet,
   View,
   Text,
+  Alert,
   TextInput,
   TouchableOpacity,
   Dimensions,
@@ -12,11 +13,22 @@ import {
   Platform,
   Keyboard,
   TouchableWithoutFeedback,
-  Animated
+  Animated,
 } from 'react-native';
 import LottieView from 'lottie-react-native';
+// import * as SecureStore from 'expo-secure-store';
+import * as SecureStore from 'expo-secure-store';
+
+
 
 const { width, height } = Dimensions.get('window');
+const storeToken = async (token) => {
+  try {
+    await AsyncStorage.setItem('token', token);
+  } catch (error) {
+    console.error('Error storing token:', error);
+  }
+};
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -44,8 +56,14 @@ const Login = ({ navigation }) => {
         }),
       });
       const json = await response.json();
+      tk = json.authtoken;
       if (json.success) {
-        navigation.navigate('Card');
+        Alert.alert('Success', 'Sign-in Successful!');
+        await SecureStore.setItemAsync('auth',tk);
+        console.log('Sign-in Successful!',json.authtoken);
+         
+
+        navigation.navigate('Welcome');
       } else {
         alert('Login failed');
       }

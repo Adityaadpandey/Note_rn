@@ -11,10 +11,22 @@ import {
   Platform,
   ScrollView,
   ActivityIndicator,
+  AsyncStorage
 } from 'react-native';
 import LottieView from 'lottie-react-native';
 
+
+
+
 const { width } = Dimensions.get('window');
+// const storeToken = async (token) => {
+//   try {
+//     await AsyncStorage.setItem('token', token);
+//   } catch (error) {
+//     console.error('Error storing token:', error);
+//   }
+// };
+
 
 export default function Signin({ navigation }) {
   const [name, setName] = useState('');
@@ -41,6 +53,16 @@ export default function Signin({ navigation }) {
         const json = await response.json();
         if (json.success) {
           Alert.alert('Success', 'Sign-in Successful!');
+          _storeData = async () => {
+            try {
+              await AsyncStorage.setItem(
+                'auth',
+                json.authtoken,
+              );
+            } catch (error) {
+              // Error saving data
+            }
+          };
           navigation.navigate('Card');
         } else {
           Alert.alert('Error', json.message || 'Sign-in Failed');
