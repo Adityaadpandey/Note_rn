@@ -94,7 +94,7 @@ export default function Signin({ navigation }) {
           style={styles.animation}
         />
         <View style={styles.formContainer}>
-          <Text style={styles.title}>Sign In</Text>
+          <Text style={styles.title}>Sign Up</Text>
           <TextInput
             style={styles.input}
             placeholder="Name"
